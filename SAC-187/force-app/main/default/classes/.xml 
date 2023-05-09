@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexClass xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <status>Active</status>
+    <description>A trigger to set related students to inactive if the student status was created more than 30 days ago.</description>
+    <userStory>As a user, I want to ensure that all students related to an institute are set to inactive if their status was created more than 30 days ago, so that we can maintain accurate student records.</userStory>
+    <acceptanceCriteria>A trigger is created on the Institute__c object. Whenever an Institute__c record is updated, the trigger is fired. The trigger identifies all Student__c records related to the updated Institute__c record. The trigger checks the Status__c of each related Student__c record. If the Status__c was created more than 30 days ago, the Student__c record is updated to Inactive. The trigger runs smoothly without any errors.</acceptanceCriteria>
+    <definitionOfDone>The trigger code is written and tested in a sandbox environment. The trigger code is reviewed and approved by a second developer. The trigger is deployed to the production environment. The trigger is tested in the production environment to ensure it runs smoothly and meets the acceptance criteria. The trigger code is documented for future reference.</definitionOfDone>
+</ApexClass>
