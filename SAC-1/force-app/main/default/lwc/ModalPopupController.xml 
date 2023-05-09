@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage,lightning__RecordPage,lightning__HomePage">
+            <property name="modal" type="Boolean" label="Enable Modal" default="true"/>
+        </targetConfig>
+    </targetConfigs>
+    <masterDefinition>
+        <component>
+            <description>Modal/Popup window which contains “welcome” in Lightning Web Component(LWC) in Salesforce (SFDC)</description>
+            <flexipage:masterDetail>false</flexipage:masterDetail>
+            <flexipage:favorite>false</flexipage:favorite>
+            <flexipage:supportsLightningRecordHome>true</flexipage:supportsLightningRecordHome>
+            <flexipage:availableForMobile>true</flexipage:availableForMobile>
+            <flexipage:availableForTablet>true</flexipage:availableForTablet>
+            <flexipage:availableForConsole>true</flexipage:availableForConsole>
+            <flexipage:availableForFlow>true</flexipage:availableForFlow>
+            <flexipage:availableForLookup>true</flexipage:availableForLookup>
+            <flexipage:availableForEmbedded>true</flexipage:availableForEmbedded>
+            <flexipage:type>standard</flexipage:type>
+            <apiVersion>48.0</apiVersion>
+            <isExposed>true</isExposed>
+            <targets>
+                <target>lightning__AppPage</target>
+                <target>lightning__RecordPage</target>
+                <target>lightning__HomePage</target>
+            </targets>
+        </component>
+    </masterDefinition>
+    <aura:component>
+        <aura:attribute name="modal" type="Boolean" default="true" />
+        <div>
+            <lightning:button label="Open Modal" onclick="{! c.openModal }"/>
+            <lightning:overlayLibrary aura:id="overlayLib"/>
+        </div>
+    </aura:component>
+    <aura:component>
+        <lightning:overlayLibrary aura:id="overlayLib"/>
+        <div class="slds-modal__container">
+            <div class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__content slds-p-around_medium">
+                    <h2 class="slds-text-heading_medium">Welcome!</h2>
+                    <p>This is a modal/popup window with a welcome message.</p>
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning:button variant="neutral" label="Close" onclick="{! c.closeModal }" />
+                </div>
+            </div>
+        </div>
+    </aura:component>
+    <aura:component>
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+        <aura:attribute name="modal" type="Boolean" default="{!v.modal}" />
+        <lightning:overlayLibrary aura:id="overlayLib"/>
+        <div>
+            <lightning:button label="Open Modal" onclick="{! c.openModal }"/>
+            <aura:if isTrue="{!v.modal}">
+                <div class="slds-modal__container">
+                    <div class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__content slds-p-around_medium">
+                            <h2 class="s
